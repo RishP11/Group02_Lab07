@@ -92,8 +92,8 @@ void UART_Tx( unsigned char data )
 
 unsigned char UART_Rx( void )
 {
-    if((UART5_FR_R & 0x40) != 0){
-        unsigned char rxData = UART5_DR_R ;
+    if((UART7_FR_R & 0x40) != 0){
+        unsigned char rxData = UART7_DR_R ;
         return rxData ; // Read the Rx msg from the Data Register
     }
     else{
@@ -142,7 +142,7 @@ void UART7_setup( void )
     UART7_LCRH_R |= (1 << 6) | (1 << 5) | (1 << 1) ;            // |7-SPS|6,5-WLEN|4-FEN|3-STP2|2-EPS|1-PEN|0-BRK|
     UART7_CC_R = 0x00 ;                                         // Clock source of the register
     UART7_ECR_R = 0xFF ;
-    UART7_CTL_R |= (1 << 8) | (1 << 0) ;             // |9-RXE|8-TXE|7-LBE|6-.|5-HSE|4-EOT|3-SMART|2-SIRLP|1-SIREN|0-UARTEN|
+    UART7_CTL_R |= (1 << 9) | (1 << 8) | (1 << 0) ;             // |9-RXE|8-TXE|7-LBE|6-.|5-HSE|4-EOT|3-SMART|2-SIRLP|1-SIREN|0-UARTEN|
 }
 
 void PORT_E_init( void )
